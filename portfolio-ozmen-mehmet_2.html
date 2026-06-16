@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ozmen Mehmet — Portfolio</title>
+<style>
+  :root {
+    --bg:#f5f0e8;--bg2:#ede8df;--bg3:#e4ddd2;
+    --acc:#6b7c5c;--acc-soft:rgba(107,124,92,0.09);--acc-b:rgba(107,124,92,0.25);
+    --t:#2a2420;--t2:#6b5f56;--t3:#a8998e;
+    --b:rgba(42,36,32,0.09);
+    --mono:'Courier New',monospace;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--t);font-family:var(--sans);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+  a{color:var(--acc);text-decoration:none}
+  a:hover{opacity:.75}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:rgba(245,240,232,.93);backdrop-filter:blur(10px);border-bottom:.5px solid var(--b)}
+  .logo{font-family:var(--mono);font-size:14px;color:var(--acc)}
+  nav ul{list-style:none;display:flex;gap:2rem}
+  nav a{font-size:13px;color:var(--t2);transition:color .2s}
+  nav a:hover{color:var(--t);opacity:1}
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 2rem;max-width:820px;margin:0 auto;padding-top:52px}
+  .hero-tag{font-family:var(--mono);font-size:12px;color:var(--acc);letter-spacing:.1em;margin-bottom:1.5rem}
+  .hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;line-height:1.08;letter-spacing:-.02em;margin-bottom:1.5rem}
+  .hero h1 em{color:var(--acc);font-style:normal}
+  .hero p{font-size:1.05rem;color:var(--t2);max-width:480px;margin-bottom:2.5rem;line-height:1.8}
+  .hero-btns{display:flex;gap:.75rem;flex-wrap:wrap}
+  .btn{padding:.6rem 1.4rem;border-radius:5px;font-size:14px;font-weight:500;cursor:pointer;transition:all .18s;display:inline-block}
+  .btn-acc{background:var(--acc);color:#fff;border:1px solid var(--acc)}
+  .btn-acc:hover{opacity:.85}
+  .btn-ghost{background:transparent;color:var(--t2);border:.5px solid rgba(42,36,32,0.18)}
+  .btn-ghost:hover{border-color:rgba(42,36,32,0.35);color:var(--t)}
+  section{padding:6rem 2rem;max-width:820px;margin:0 auto}
+  .sep{height:.5px;background:var(--b);max-width:820px;margin:0 auto}
+  .lbl{font-family:var(--mono);font-size:11px;color:var(--acc);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem}
+  h2{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:2.5rem;line-height:1.2}
+  .about-cols{display:grid;grid-template-columns:1.5fr 1fr;gap:3.5rem;align-items:start}
+  .about-cols p{color:var(--t2);margin-bottom:1rem;font-size:1rem}
+  .about-cols p strong{color:var(--t);font-weight:500}
+  .info-box{background:var(--bg2);border:.5px solid var(--b);border-radius:8px;padding:1.25rem 1.4rem}
+  .box-t{font-family:var(--mono);font-size:11px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
+  .il{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:.5px solid var(--b);font-size:13.5px;gap:1rem}
+  .il:last-child{border-bottom:none}
+  .il .k{color:var(--t3)}.il .v{color:var(--t);text-align:right}.il .v.g{color:var(--acc)}
+  .sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem}
+  .sc{background:var(--bg2);border:.5px solid var(--b);border-radius:8px;padding:1.2rem 1.3rem}
+  .sc h3{font-size:12px;font-family:var(--mono);color:var(--t2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.9rem}
+  .chips{display:flex;flex-wrap:wrap;gap:.35rem}
+  .chip{font-size:12px;font-family:var(--mono);padding:2px 8px;background:var(--bg3);border:.5px solid var(--b);border-radius:3px;color:var(--t2)}
+  .chip.a{color:var(--acc);border-color:var(--acc-b);background:var(--acc-soft)}
+  .pl{display:flex;flex-direction:column;gap:1.2rem}
+  .proj{background:var(--bg2);border:.5px solid var(--b);border-radius:8px;overflow:hidden;cursor:pointer;transition:border-color .2s}
+  .proj:hover{border-color:rgba(42,36,32,0.18)}
+  .proj.open{border-color:var(--acc-b)}
+  .pt{display:flex;justify-content:space-between;align-items:flex-start;padding:1.4rem 1.6rem;gap:1rem}
+  .pn{font-family:var(--mono);font-size:11px;color:var(--t3);margin-bottom:.3rem;letter-spacing:.06em}
+  .pt h3{font-size:15px;font-weight:600;color:var(--t);margin-bottom:.4rem}
+  .pt p{font-size:13.5px;color:var(--t2);line-height:1.6}
+  .pi{width:20px;height:20px;flex-shrink:0;color:var(--t3);margin-top:2px;transition:transform .22s,color .2s}
+  .proj.open .pi{transform:rotate(45deg);color:var(--acc)}
+  .pd{display:none;border-top:.5px solid var(--b);padding:1.4rem 1.6rem}
+  .proj.open .pd{display:block}
+  .dt{font-family:var(--mono);font-size:10px;color:var(--t3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.7rem;margin-top:1.2rem}
+  .dt:first-child{margin-top:0}
+  .pd ul{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+  .pd li{font-size:13.5px;color:var(--t2);padding-left:1rem;position:relative;line-height:1.6}
+  .pd li::before{content:'—';position:absolute;left:0;color:var(--t3);font-size:11px}
+  .pd li strong{color:var(--t);font-weight:500}
+  .acl{display:flex;flex-direction:column;gap:.5rem}
+  .aci{display:flex;gap:.7rem;align-items:flex-start;font-size:13px}
+  .act{font-family:var(--mono);font-size:10px;padding:2px 6px;background:var(--acc-soft);border:.5px solid var(--acc-b);border-radius:3px;color:var(--acc);white-space:nowrap;flex-shrink:0;margin-top:2px}
+  .aci p{color:var(--t2);line-height:1.55}
+  .aci p strong{color:var(--t);font-weight:500}
+  .tl{position:relative;padding-left:1.5rem}
+  .tl::before{content:'';position:absolute;left:4px;top:6px;bottom:0;width:.5px;background:var(--b)}
+  .ti{position:relative;padding-bottom:2.5rem}
+  .ti:last-child{padding-bottom:0}
+  .td{position:absolute;left:-1.5rem;top:6px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:1.5px solid var(--t3)}
+  .td.now{border-color:var(--acc);background:var(--acc)}
+  .tdate{font-family:var(--mono);font-size:11px;color:var(--t3);margin-bottom:.3rem}
+  .ti h3{font-size:15px;font-weight:600;color:var(--t);margin-bottom:.15rem}
+  .tsch{font-size:13.5px;color:var(--acc);margin-bottom:.5rem}
+  .ti p{font-size:13.5px;color:var(--t2);line-height:1.65}
+  .cb{background:var(--bg2);border:.5px solid var(--b);border-radius:10px;padding:2.5rem 2rem;text-align:center}
+  .cb p{color:var(--t2);max-width:400px;margin:0 auto 2rem;font-size:15px;line-height:1.8}
+  .cbtns{display:flex;justify-content:center;gap:.75rem;flex-wrap:wrap}
+  footer{padding:2rem;text-align:center;font-family:var(--mono);font-size:11px;color:var(--t3);border-top:.5px solid var(--b)}
+  @media(max-width:600px){nav ul{display:none}.about-cols{grid-template-columns:1fr;gap:2rem}section{padding:4rem 1.25rem}.hero{padding:0 1.25rem;padding-top:52px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">OM.</div>
+  <ul>
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#formation">Formation</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">BUT R&T — Semestre 1 · IUT de Colmar</div>
+  <h1>Ozmen<br><em>Mehmet</em></h1>
+  <p>Étudiant en réseaux et télécommunications, je viens d'un bac général maths/physique et je me dirige vers la cybersécurité. J'aime comprendre comment les choses fonctionnent — et comment les protéger.</p>
+  <div class="hero-btns">
+    <a href="#projets" class="btn btn-acc">Mes projets</a>
+    <a href="#contact" class="btn btn-ghost">Me contacter</a>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<section id="apropos">
+  <div class="lbl">À propos</div>
+  <h2>Qui suis-je ?</h2>
+  <div class="about-cols">
+    <div>
+      <p>Bonjour, je m'appelle <strong>Mehmet</strong>. Je suis en première année de BUT Réseaux &amp; Télécommunications à l'IUT de Colmar. Je viens d'un bac général avec les spécialités <strong>Mathématiques</strong> et <strong>Physique-Chimie</strong>.</p>
+      <p>Ce qui m'a attiré vers cette filière, c'est la curiosité de comprendre comment les systèmes communiquent — et surtout comment on peut les sécuriser. Je m'oriente vers la <strong>cybersécurité</strong>, un domaine qui me passionne de plus en plus au fil des cours et des projets.</p>
+      <p>Pour l'instant j'en suis au début, mais chaque TP est une occasion d'apprendre quelque chose de concret.</p>
+    </div>
+    <div>
+      <div class="info-box">
+        <div class="box-t">Infos</div>
+        <div class="il"><span class="k">Localisation</span><span class="v">Colmar, France</span></div>
+        <div class="il"><span class="k">Niveau</span><span class="v">BUT R&T — S1</span></div>
+        <div class="il"><span class="k">Intérêt</span><span class="v g">Cybersécurité</span></div>
+        <div class="il"><span class="k">Langues</span><span class="v">Français · Anglais</span></div>
+        <div class="il"><span class="k">Permis</span><span class="v">B</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<section id="competences">
+  <div class="lbl">Compétences</div>
+  <h2>Ce que j'ai appris jusqu'ici</h2>
+  <div class="sg">
+    <div class="sc">
+      <h3>Réseau</h3>
+      <div class="chips">
+        <span class="chip">VLANs</span><span class="chip">DHCP</span><span class="chip">Routage</span><span class="chip">Cisco IOS</span><span class="chip">EVE-NG</span><span class="chip">GNS3</span><span class="chip">RIP v2</span>
+      </div>
+    </div>
+    <div class="sc">
+      <h3>Sécurité</h3>
+      <div class="chips">
+        <span class="chip a">Wireshark</span><span class="chip a">ACL</span><span class="chip a">Port-Security</span><span class="chip">Ransomwares</span>
+      </div>
+    </div>
+    <div class="sc">
+      <h3>Systèmes</h3>
+      <div class="chips">
+        <span class="chip">Linux</span><span class="chip">Apache</span><span class="chip">FTP</span><span class="chip">rsync</span><span class="chip">VM</span>
+      </div>
+    </div>
+    <div class="sc">
+      <h3>Dev / Web</h3>
+      <div class="chips">
+        <span class="chip">Python (bases)</span><span class="chip">HTML / CSS</span><span class="chip">C++ Arduino</span><span class="chip">Git</span><span class="chip">BDD</span>
+      </div>
+    </div>
+    <div class="sc">
+      <h3>IoT</h3>
+      <div class="chips">
+        <span class="chip">ESP32</span><span class="chip">MQTT</span><span class="chip">SPI</span><span class="chip">WiFiManager</span><span class="chip">IDE Arduino</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<section id="projets">
+  <div class="lbl">Projets</div>
+  <h2>Mes SAÉ</h2>
+  <div class="pl">
+
+    <!-- SAÉ 1.02 -->
+    <div class="proj" onclick="toggle(this)">
+      <div class="pt">
+        <div>
+          <div class="pn">SAÉ 1.02 — Semestre 1</div>
+          <h3>S'initier aux réseaux informatiques</h3>
+          <p>Mon premier vrai projet réseau : configurer une infrastructure multi-VLAN sur simulateur, comme en entreprise.</p>
+        </div>
+        <svg class="pi" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/>
+        </svg>
+      </div>
+      <div class="pd">
+        <div class="dt">Ce qu'on a fait</div>
+        <ul>
+          <li>Créé une topologie réseau complète sous <strong>EVE-NG</strong> avec des équipements Cisco virtuels</li>
+          <li>Découpé un réseau en sous-réseaux par département (Direction, Utilisateurs, Serveurs)</li>
+          <li>Configuré des VLANs, des liens Trunk et le protocole VTP entre plusieurs commutateurs</li>
+          <li>Mis en place un serveur DHCP sur Linux pour distribuer les adresses automatiquement</li>
+          <li>Utilisé Wireshark pour analyser les trames et vérifier que tout fonctionnait</li>
+        </ul>
+        <div class="dt">Ce que j'ai appris</div>
+        <div class="acl">
+          <div class="aci"><span class="act">AC11.03</span><p><strong>Configurer un réseau local</strong> — j'ai mis les mains dedans pour la première fois et compris pourquoi on segmente un réseau.</p></div>
+          <div class="aci"><span class="act">AC11.04</span><p><strong>Systèmes d'exploitation</strong> — utiliser Linux en ligne de commande pour configurer un service DHCP, ça m'a sorti de ma zone de confort.</p></div>
+        </div>
+        <div class="dt">Technologies</div>
+        <div class="chips" style="margin-top:.4rem">
+          <span class="chip">EVE-NG</span><span class="chip">Cisco IOS</span><span class="chip">VLANs</span><span class="chip">DHCP</span><span class="chip">Wireshark</span><span class="chip">Linux</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SAÉ 1.03 -->
+    <div class="proj" onclick="toggle(this)">
+      <div class="pt">
+        <div>
+          <div class="pn">SAÉ 1.03 — Semestre 1</div>
+          <h3>Découvrir le Wi-Fi et les transmissions</h3>
+          <p>On a mesuré la couverture Wi-Fi de l'IUT, câblé des prises réseau et simulé une infrastructure sans-fil Cisco.</p>
+        </div>
+        <svg class="pi" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/>
+        </svg>
+      </div>
+      <div class="pd">
+        <div class="dt">Ce qu'on a fait</div>
+        <ul>
+          <li>Câblé des prises réseau selon la norme 568B — la première fois qu'on touchait du vrai matériel</li>
+          <li>Mesuré la puissance PoE avec un testeur pour vérifier qu'un point d'accès était bien alimenté</li>
+          <li>Créé des <strong>heatmaps</strong> pour visualiser la propagation du signal Wi-Fi dans l'IUT</li>
+          <li>Simulé une infrastructure avec contrôleur Wi-Fi Cisco sur Packet Tracer</li>
+          <li>Découvert pourquoi le béton armé coupe le signal 5 GHz (effet cage de Faraday)</li>
+        </ul>
+        <div class="dt">Ce que j'ai appris</div>
+        <div class="acl">
+          <div class="aci"><span class="act">AC12.03</span><p><strong>Déployer des supports de transmission</strong> — j'ai vraiment câblé des prises, pas juste lu la norme dans un cours.</p></div>
+          <div class="aci"><span class="act">AC12.01</span><p><strong>Mesurer et analyser des signaux</strong> — les relevés RSSI m'ont aidé à comprendre concrètement ce qu'est l'atténuation du signal.</p></div>
+        </div>
+        <div class="dt">Technologies</div>
+        <div class="chips" style="margin-top:.4rem">
+          <span class="chip">Packet Tracer</span><span class="chip">WLC Cisco</span><span class="chip">PoE</span><span class="chip">Heatmap</span><span class="chip">802.11</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SAÉ 1.05 -->
+    <div class="proj" onclick="toggle(this)">
+      <div class="pt">
+        <div>
+          <div class="pn">SAÉ 1.05 — Semestre 1</div>
+          <h3>Sensibilisation aux ransomwares</h3>
+          <p>On a étudié comment fonctionnent les ransomwares et créé une vidéo pour expliquer les risques à des gens non-techniques.</p>
+        </div>
+        <svg class="pi" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/>
+        </svg>
+      </div>
+      <div class="pd">
+        <div class="dt">Ce qu'on a fait</div>
+        <ul>
+          <li>Étudié les modes d'infection : phishing, failles logicielles, pièces jointes piégées</li>
+          <li>Compris comment une attaque se déroule, de l'accès initial au chiffrement des données</li>
+          <li>Documenté les bonnes pratiques : sauvegardes 3-2-1, mises à jour, vigilance face aux mails</li>
+          <li>Tourné et monté une <strong>vidéo de prévention</strong> pour un public non-technique</li>
+        </ul>
+        <div class="dt">Ce que j'ai appris</div>
+        <div class="acl">
+          <div class="aci"><span class="act">AC24.01</span><p><strong>Bonnes pratiques cyber</strong> — ce projet m'a donné envie d'aller plus loin : comprendre les attaques pour mieux les contrer, c'est exactement ce qui m'attire.</p></div>
+          <div class="aci"><span class="act">CE4.05</span><p><strong>Communiquer sur la sécurité</strong> — vulgariser des concepts techniques pour un public lambda, c'est un vrai exercice.</p></div>
+        </div>
+        <div class="dt">Ce que ça m'a apporté</div>
+        <ul>
+          <li>C'est le projet qui m'a le plus motivé du semestre — j'ai voulu aller plus loin que le cours</li>
+          <li>J'ai compris que la sécurité ce n'est pas que technique, c'est aussi humain</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SAÉ 2.01 GNS3 -->
+    <div class="proj" onclick="toggle(this)">
+      <div class="pt">
+        <div>
+          <div class="pn">SAÉ 2.01 — Semestre 2</div>
+          <h3>Construire et sécuriser un réseau d'entreprise</h3>
+          <p>Déploiement complet d'une infrastructure réseau sous GNS3 : VLANs, routage dynamique, services Linux et règles de sécurité.</p>
+        </div>
+        <svg class="pi" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/>
+        </svg>
+      </div>
+      <div class="pd">
+        <div class="dt">Ce qu'on a fait</div>
+        <ul>
+          <li>Découpé le réseau 192.168.64.0/20 en sous-réseaux par groupe puis par VLAN avec des masques variables (VLSM)</li>
+          <li>Créé trois VLANs (administration, développeurs, administrateurs) avec VLAN natif 999 sécurisé</li>
+          <li>Configuré le <strong>routage inter-VLAN</strong> et le protocole <strong>RIP v2</strong> entre les routeurs</li>
+          <li>Mis en place un équilibrage de charge <strong>Spanning-Tree</strong> sur liaisons redondantes</li>
+          <li>Déployé un serveur FTP (accès anonyme + utilisateurs), deux serveurs Apache synchronisés via <strong>rsync</strong> et un serveur DHCP</li>
+          <li>Sécurisé les ports des commutateurs avec <strong>Port-Security</strong> (une seule adresse MAC par port)</li>
+          <li>Appliqué des <strong>ACL</strong> pour n'autoriser que le trafic HTTP, SSH et rsync (port 873)</li>
+        </ul>
+        <div class="dt">Concepts mobilisés</div>
+        <ul>
+          <li>VLSM — adressage variable pour optimiser l'espace d'adressage</li>
+          <li>Sécurité réseau — principe du moindre privilège appliqué via ACL et Port-Security</li>
+          <li>Services Linux — FTP, Apache, DHCP, rsync en production sur machines virtuelles</li>
+        </ul>
+        <div class="dt">Ce que j'ai appris</div>
+        <div class="acl">
+          <div class="aci"><span class="act">AC21.01</span><p><strong>Routage dynamique</strong> — configurer RIP v2 sur plusieurs routeurs et vérifier la convergence du réseau.</p></div>
+          <div class="aci"><span class="act">AC21.02</span><p><strong>Sécurité de base</strong> — les ACL et le Port-Security, c'est la première fois que je protégeais vraiment un réseau, pas juste que je le configurais.</p></div>
+          <div class="aci"><span class="act">AC21.04</span><p><strong>Services avancés</strong> — déployer FTP, Apache et rsync sur des serveurs Linux réels, pas simulés.</p></div>
+        </div>
+        <div class="dt">Technologies</div>
+        <div class="chips" style="margin-top:.4rem">
+          <span class="chip">GNS3</span><span class="chip">Cisco IOS</span><span class="chip">RIP v2</span><span class="chip a">ACL</span><span class="chip a">Port-Security</span><span class="chip">VLSM</span><span class="chip">STP</span><span class="chip">Apache</span><span class="chip">FTP</span><span class="chip">rsync</span><span class="chip">Linux</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SAÉ 2.02 Web Radio -->
+    <div class="proj" onclick="toggle(this)">
+      <div class="pt">
+        <div>
+          <div class="pn">SAÉ 2.02 — Semestre 2</div>
+          <h3>Web Radio portable sur ESP32</h3>
+          <p>Conception d'une web radio IoT : un microcontrôleur ESP32 qui lit des flux MP3/AAC depuis internet, contrôlable depuis le téléphone via MQTT.</p>
+        </div>
+        <svg class="pi" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/>
+        </svg>
+      </div>
+      <div class="pd">
+        <div class="dt">Ce qu'on a fait</div>
+        <ul>
+          <li>Câblé et interfacé une carte <strong>Adafruit HUZZAH32 ESP32</strong> avec un CoDec audio <strong>VS1053</strong> via le protocole SPI</li>
+          <li>Programmé en <strong>C++ sous IDE Arduino</strong> en intégrant des bibliothèques tierces (Baldram, ESP32_VS1053_Stream)</li>
+          <li>Géré le volume, les basses, les aigus et la spatialisation depuis le clavier série puis depuis le téléphone</li>
+          <li>Implémenté <strong>WiFiManager</strong> pour se connecter à n'importe quel réseau Wi-Fi sans mettre les mots de passe en dur dans le code</li>
+          <li>Utilisé le protocole <strong>MQTT</strong> (bibliothèque PubSubClient) pour contrôler la radio depuis l'app Android IoT MQTT Panel</li>
+          <li>Compris les registres matériels du VS1053 pour créer des fonctions de spatialisation non disponibles dans les bibliothèques</li>
+        </ul>
+        <div class="dt">Concepts mobilisés</div>
+        <ul>
+          <li>Protocole SPI — communication entre le microcontrôleur et le CoDec audio</li>
+          <li>MQTT — protocole de messagerie IoT, publish/subscribe entre l'ESP32 et l'application mobile</li>
+          <li>WiFiManager — portail captif pour configurer le Wi-Fi sans toucher au code</li>
+          <li>Registres matériels — accès direct aux registres du VS1053 pour créer des fonctionnalités sur mesure</li>
+        </ul>
+        <div class="dt">Ce que j'ai appris</div>
+        <div class="acl">
+          <div class="aci"><span class="act">AC23.02</span><p><strong>Développer une application</strong> — écrire du C++ embarqué pour un cahier des charges réel, avec des contraintes de bibliothèques et de matériel.</p></div>
+          <div class="aci"><span class="act">AC23.03</span><p><strong>Protocole réseau client/serveur</strong> — MQTT m'a montré comment un objet connecté peut communiquer de façon bidirectionnelle avec une application mobile.</p></div>
+          <div class="aci"><span class="act">AC13.03</span><p><strong>Traduire un algorithme</strong> — adapter un code existant à des cartes différentes de celles prévues, ça m'a appris à lire des datasheets et à chercher par moi-même.</p></div>
+        </div>
+        <div class="dt">Technologies</div>
+        <div class="chips" style="margin-top:.4rem">
+          <span class="chip">ESP32</span><span class="chip">C++ Arduino</span><span class="chip a">MQTT</span><span class="chip">SPI</span><span class="chip">VS1053</span><span class="chip">WiFiManager</span><span class="chip">PubSubClient</span><span class="chip">IoT</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SAÉ 2.03 Site web + BDD -->
+    <div class="proj" onclick="toggle(this)">
+      <div class="pt">
+        <div>
+          <div class="pn">SAÉ 2.03 — Semestre 2</div>
+          <h3>Application web avec base de données</h3>
+          <p>En groupe de 3, on a créé un site web hébergé sur une VM Linux pour consulter et manipuler une base de données fournie par l'IUT.</p>
+        </div>
+        <svg class="pi" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/>
+        </svg>
+      </div>
+      <div class="pd">
+        <div class="dt">Ce qu'on a fait</div>
+        <ul>
+          <li>Configuré une <strong>machine virtuelle Linux</strong> et installé un serveur web + un SGBD (MariaDB)</li>
+          <li>Développé un site web permettant d'alimenter, consulter et modifier une base de données métier</li>
+          <li>Travaillé en groupe de 3 avec <strong>Git/GitHub</strong> pour versionner le code et se répartir les tâches</li>
+          <li>Rédigé un diagramme de Gantt pour planifier et suivre l'avancement du projet</li>
+          <li>Produit une procédure d'installation et de déploiement (2–5 pages) expliquant nos choix techniques</li>
+          <li>Présenté le projet en 5 minutes devant les enseignants, suivi de 10 minutes de questions</li>
+        </ul>
+        <div class="dt">Ressources mobilisées</div>
+        <ul>
+          <li>R107 / R108 — programmation et systèmes d'exploitation</li>
+          <li>R109 / R209 — technologies et développement web</li>
+          <li>R207 / R208 — sources et traitement des données</li>
+        </ul>
+        <div class="dt">Ce que j'ai appris</div>
+        <div class="acl">
+          <div class="aci"><span class="act">AC0314</span><p><strong>Architecture d'un site web</strong> — comprendre comment un serveur web, une base de données et un client s'articulent ensemble.</p></div>
+          <div class="aci"><span class="act">AC0315</span><p><strong>Gestion de données</strong> — choisir et configurer un SGBD, concevoir un schéma adapté au besoin.</p></div>
+          <div class="aci"><span class="act">AC0316</span><p><strong>Travail collaboratif</strong> — utiliser Git en équipe pour la première fois, c'est plus compliqué que prévu mais vraiment utile.</p></div>
+        </div>
+        <div class="dt">Technologies</div>
+        <div class="chips" style="margin-top:.4rem">
+          <span class="chip">Linux VM</span><span class="chip">Apache</span><span class="chip">MariaDB</span><span class="chip">HTML / CSS</span><span class="chip">PHP</span><span class="chip">Git</span><span class="chip a">GitHub</span>
+        </div>
+        <div class="dt">Lien GitHub</div>
+        <p style="font-size:13.5px;color:var(--t2);margin-top:.4rem">Le code source du projet est disponible sur mon profil GitHub : <a href="https://github.com/mehmet620" target="_blank" style="color:var(--acc)">github.com/mehmet620</a></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<section id="formation">
+  <div class="lbl">Formation</div>
+  <h2>Mon parcours</h2>
+  <div class="tl">
+    <div class="ti">
+      <div class="td now"></div>
+      <div class="tdate">2025 — en cours</div>
+      <h3>BUT Réseaux &amp; Télécommunications</h3>
+      <div class="tsch">IUT de Colmar — Université de Haute-Alsace</div>
+      <p>Première année. Formation qui couvre les réseaux, les télécoms, les systèmes et le développement. Je m'oriente vers la cybersécurité pour la suite.</p>
+    </div>
+    <div class="ti">
+      <div class="td"></div>
+      <div class="tdate">2022 — 2025</div>
+      <h3>Baccalauréat Général</h3>
+      <div class="tsch">Spécialités Mathématiques &amp; Physique-Chimie</div>
+      <p>Deux spécialités scientifiques qui m'ont donné le goût de la rigueur et du raisonnement logique. Une bonne base pour aborder les réseaux et la sécurité informatique.</p>
+    </div>
+    <div class="ti">
+      <div class="td"></div>
+      <div class="tdate">2022</div>
+      <h3>Brevet des collèges</h3>
+      <div class="tsch">DNB obtenu</div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<section id="contact">
+  <div class="lbl">Contact</div>
+  <h2>Me contacter</h2>
+  <div class="cb">
+    <p>Je suis ouvert à toute opportunité de stage ou d'alternance dans la cybersécurité ou les réseaux. N'hésitez pas à me faire signe.</p>
+    <div class="cbtns">
+      <a href="mailto:ozmen.mehmet@etu.uha.fr" class="btn btn-acc">✉ E-mail</a>
+      <a href="https://github.com/mehmet620" target="_blank" class="btn btn-ghost">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Ozmen Mehmet — BUT R&T · IUT de Colmar</footer>
+
+<script>
+function toggle(el){const o=el.classList.contains('open');document.querySelectorAll('.proj.open').forEach(p=>p.classList.remove('open'));if(!o)el.classList.add('open')}
+</script>
+</body>
+</html>

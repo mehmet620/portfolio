@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Construire et sécuriser un réseau d'entreprise — Ozmen Mehmet</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">OM<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="projets.html" class="active">Projets</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="formations.html">Formation</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right"><a href="https://github.com/mehmet620" target="_blank" class="nav-icon">GitHub ↗</a></div>
+</nav>
+
+<div class="proj-detail pt" style="padding-top:calc(54px + 3.5rem)">
+  <div class="bread"><a href="projets.html">Projets</a><span>/</span><span>Construire et sécuriser un réseau d'entreprise</span></div>
+
+  <h1 style="font-size:clamp(1.6rem,4vw,2.6rem);font-weight:700;letter-spacing:-.02em;line-height:1.12;margin-bottom:1.5rem">Construire et sécuriser un réseau d'entreprise</h1>
+
+  <div class="proj-meta-bar">
+    <span class="meta-tag g">SAÉ 2.01 · Semestre 2 · Individuel</span>
+  </div>
+
+  <p style="font-size:1.05rem;color:var(--t2);line-height:1.8;max-width:620px;margin-bottom:3rem">Déploiement complet d'une infrastructure réseau sous GNS3 avec segmentation VLAN, routage dynamique, services Linux et politique de sécurité : la première fois que je protégeais vraiment un réseau.</p>
+
+  <div class="section-block">
+    <h2>Ce qu'on a fait</h2>
+    <ul><li>Découpé le réseau 192.168.64.0/20 en sous-réseaux par personne puis par VLAN avec masques variables (<strong>VLSM</strong>)</li>
+<li>Créé 3 VLANs (100 administration, 200 développeurs, 300 administrateurs) avec VLAN natif 999 sécurisé et tagué</li>
+<li>Configuré le <strong>routage inter-VLAN</strong> centralisé sur le commutateur fédérateur</li>
+<li>Mis en place le <strong>protocole RIP v2</strong> entre les routeurs et l&apos;équilibrage STP sur liaisons redondantes</li>
+<li>Déployé un serveur <strong>FTP</strong> (accès anonyme + utilisateurs Antoine et Élise), deux serveurs <strong>Apache</strong> synchronisés via rsync et un serveur DHCP</li>
+<li>Sécurisé les ports des commutateurs via <strong>Port-Security</strong> (une seule adresse MAC par port, shutdown en cas de violation)</li>
+<li>Appliqué des <strong>ACL</strong> sur les routeurs : autorisation exclusive HTTP, SSH (22) et rsync (873)</li></ul>
+  </div>
+
+  <div class="section-block">
+    <h2>Concepts mis en œuvre</h2>
+    <ul><li>VLSM — adressage à masques variables pour optimiser chaque sous-réseau</li>
+<li>Principe du moindre privilège — bloquer tout trafic non explicitement autorisé via ACL</li>
+<li>Port-Security — sécurité physique au niveau du commutateur</li>
+<li>RIP v2 — protocole de routage dynamique à vecteur de distance</li>
+<li>rsync — synchronisation efficace entre deux serveurs web</li></ul>
+  </div>
+
+  <div class="section-block">
+    <h2>Apprentissages critiques</h2>
+    <div class="ac-list"><div class="ac-row"><span class="ac-tag">AC21.01</span><p><strong>Routage dynamique</strong> — configurer RIP v2 sur plusieurs routeurs et vérifier la convergence du réseau.</p></div>
+<div class="ac-row"><span class="ac-tag">AC21.02</span><p><strong>Sécurité de base</strong> — les ACL et le Port-Security, c&apos;est la première fois que je protégeais vraiment un réseau et pas juste que je le configurais.</p></div>
+<div class="ac-row"><span class="ac-tag">AC21.04</span><p><strong>Services réseaux avancés</strong> — déployer FTP, Apache et rsync sur des serveurs Linux réels, pas simulés.</p></div>
+<div class="ac-row"><span class="ac-tag">CE1.02</span><p><strong>Principes de sécurité</strong> — application du moindre privilège : tout ce qui n&apos;est pas autorisé est bloqué.</p></div></div>
+  </div>
+
+  <div class="section-block">
+    <h2>Technologies</h2>
+    <div class="chips" style="margin-top:.4rem"><span class="chip">GNS3</span><span class="chip">Cisco IOS</span><span class="chip">RIP v2</span><span class="chip">VLSM</span><span class="chip">STP</span><span class="chip a">ACL</span><span class="chip a">Port-Security</span><span class="chip">Apache</span><span class="chip">FTP</span><span class="chip">rsync</span><span class="chip">Linux</span></div>
+  </div>
+
+  <div class="section-block">
+    <h2>Bilan réflexif</h2>
+    <div class="bilan-box">Ce projet m&apos;a montré la différence entre "configurer un réseau" et "sécuriser un réseau". Implémenter les ACL m&apos;a obligé à penser comme un attaquant pour définir ce qu&apos;il faut interdire. Le VLSM m&apos;a aussi appris qu&apos;un bon plan d&apos;adressage sur papier fait gagner des heures de debug.</div>
+  </div>
+
+  <div class="proj-nav">
+    <a href="sae105.html">← ← SAÉ 1.05</a>
+    <a href="sae202.html">SAÉ 2.02 →</a>
+  </div>
+</div>
+
+<footer>© 2026 Ozmen Mehmet — BUT R&T · IUT de Colmar</footer>
+</body>
+</html>

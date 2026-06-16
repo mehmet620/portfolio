@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>S'initier aux réseaux informatiques — Ozmen Mehmet</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">OM<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="projets.html" class="active">Projets</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="formations.html">Formation</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right"><a href="https://github.com/mehmet620" target="_blank" class="nav-icon">GitHub ↗</a></div>
+</nav>
+
+<div class="proj-detail pt" style="padding-top:calc(54px + 3.5rem)">
+  <div class="bread"><a href="projets.html">Projets</a><span>/</span><span>S'initier aux réseaux informatiques</span></div>
+
+  <h1 style="font-size:clamp(1.6rem,4vw,2.6rem);font-weight:700;letter-spacing:-.02em;line-height:1.12;margin-bottom:1.5rem">S'initier aux réseaux informatiques</h1>
+
+  <div class="proj-meta-bar">
+    <span class="meta-tag g">SAÉ 1.02 · Semestre 1 · Individuel</span>
+  </div>
+
+  <p style="font-size:1.05rem;color:var(--t2);line-height:1.8;max-width:620px;margin-bottom:3rem">Mon premier vrai projet réseau : configurer une infrastructure multi-VLAN sur simulateur, comme en entreprise.</p>
+
+  <div class="section-block">
+    <h2>Ce qu'on a fait</h2>
+    <ul><li>Créé une topologie réseau complète sous <strong>EVE-NG</strong> avec des équipements Cisco virtuels</li>
+<li>Découpé le réseau en sous-réseaux par département (Direction, Utilisateurs, Serveurs)</li>
+<li>Configuré des VLANs, des liens Trunk et le protocole VTP entre plusieurs commutateurs</li>
+<li>Déployé un serveur DHCP sur Linux pour distribuer les adresses automatiquement</li>
+<li>Analysé les trames 802.1Q avec Wireshark pour vérifier l&apos;isolation des VLANs</li></ul>
+  </div>
+
+  <div class="section-block">
+    <h2>Concepts mis en œuvre</h2>
+    <ul><li>Segmentation logique par VLANs — pourquoi isoler le trafic par département</li>
+<li>Protocole VTP — centraliser la gestion des VLANs sur un seul commutateur</li>
+<li>Routage inter-VLAN — permettre la communication contrôlée entre segments</li></ul>
+  </div>
+
+  <div class="section-block">
+    <h2>Apprentissages critiques</h2>
+    <div class="ac-list"><div class="ac-row"><span class="ac-tag">AC11.03</span><p><strong>Configurer un réseau local</strong> — j&apos;ai mis les mains dedans pour la première fois et compris pourquoi on segmente un réseau.</p></div>
+<div class="ac-row"><span class="ac-tag">AC11.04</span><p><strong>Maîtriser les systèmes d&apos;exploitation</strong> — utiliser Linux en ligne de commande pour configurer DHCP, ça m&apos;a sorti de ma zone de confort.</p></div></div>
+  </div>
+
+  <div class="section-block">
+    <h2>Technologies</h2>
+    <div class="chips" style="margin-top:.4rem"><span class="chip">EVE-NG</span><span class="chip">Cisco IOS</span><span class="chip">VLANs</span><span class="chip">VTP</span><span class="chip">DHCP</span><span class="chip a">Wireshark</span><span class="chip">Linux</span></div>
+  </div>
+
+  <div class="section-block">
+    <h2>Bilan réflexif</h2>
+    <div class="bilan-box">Ce projet m&apos;a appris que la rigueur du plan d&apos;adressage IP doit précéder toute configuration. J&apos;ai aussi compris que segmenter un réseau ce n&apos;est pas juste de la théorie — c&apos;est la base de toute politique de sécurité en entreprise.</div>
+  </div>
+
+  <div class="proj-nav">
+    <a href="projets.html">← SAÉ 1.03 →</a>
+    <a href="sae103.html">← Retour projets</a>
+  </div>
+</div>
+
+<footer>© 2026 Ozmen Mehmet — BUT R&T · IUT de Colmar</footer>
+</body>
+</html>

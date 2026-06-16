@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Web Radio portable sur ESP32 — Ozmen Mehmet</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">OM<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="projets.html" class="active">Projets</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="formations.html">Formation</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right"><a href="https://github.com/mehmet620" target="_blank" class="nav-icon">GitHub ↗</a></div>
+</nav>
+
+<div class="proj-detail pt" style="padding-top:calc(54px + 3.5rem)">
+  <div class="bread"><a href="projets.html">Projets</a><span>/</span><span>Web Radio portable sur ESP32</span></div>
+
+  <h1 style="font-size:clamp(1.6rem,4vw,2.6rem);font-weight:700;letter-spacing:-.02em;line-height:1.12;margin-bottom:1.5rem">Web Radio portable sur ESP32</h1>
+
+  <div class="proj-meta-bar">
+    <span class="meta-tag g">SAÉ 2.02 · Semestre 2 · Binôme · 22h</span>
+  </div>
+
+  <p style="font-size:1.05rem;color:var(--t2);line-height:1.8;max-width:620px;margin-bottom:3rem">Conception d'une web radio IoT : un microcontrôleur ESP32 qui lit des flux MP3/AAC depuis internet, contrôlable depuis le téléphone via MQTT. Un projet qui mêle électronique, programmation embarquée et protocoles réseau.</p>
+
+  <div class="section-block">
+    <h2>Ce qu'on a fait</h2>
+    <ul><li>Câblé et interfacé une carte <strong>Adafruit HUZZAH32 ESP32</strong> avec un CoDec audio <strong>VS1053</strong> via le protocole <strong>SPI</strong></li>
+<li>Programmé en <strong>C++ sous IDE Arduino</strong> en adaptant des bibliothèques tierces (Baldram, ESP32_VS1053_Stream)</li>
+<li>Ajouté le contrôle du volume, des basses, des aigus et de la spatialisation depuis le port série</li>
+<li>Implémenté <strong>WiFiManager</strong> pour se connecter à n&apos;importe quel réseau Wi-Fi sans mettre les identifiants en dur</li>
+<li>Intégré le protocole <strong>MQTT</strong> (PubSubClient) pour piloter la radio depuis l&apos;app Android IoT MQTT Panel</li>
+<li>Accédé directement aux <strong>registres matériels</strong> du VS1053 pour créer des fonctions de spatialisation non disponibles dans les bibliothèques</li></ul>
+  </div>
+
+  <div class="section-block">
+    <h2>Concepts mis en œuvre</h2>
+    <ul><li>Protocole SPI — bus de communication série entre le microcontrôleur et le CoDec audio</li>
+<li>MQTT — protocole de messagerie IoT publish/subscribe, idéal pour les objets connectés</li>
+<li>WiFiManager — portail captif pour configurer le Wi-Fi dynamiquement sans modifier le code</li>
+<li>Registres matériels — accès bas niveau aux fonctions du VS1053 pour étendre ses capacités</li></ul>
+  </div>
+
+  <div class="section-block">
+    <h2>Apprentissages critiques</h2>
+    <div class="ac-list"><div class="ac-row"><span class="ac-tag">AC23.02</span><p><strong>Développer une application</strong> — écrire du C++ embarqué pour un cahier des charges réel, avec des contraintes de bibliothèques et de matériel.</p></div>
+<div class="ac-row"><span class="ac-tag">AC23.03</span><p><strong>Protocole réseau client/serveur</strong> — MQTT m&apos;a montré comment un objet connecté peut communiquer de façon bidirectionnelle avec une app mobile.</p></div>
+<div class="ac-row"><span class="ac-tag">AC13.03</span><p><strong>Traduire un algorithme</strong> — adapter un code existant à du matériel différent de celui prévu, ça m&apos;a appris à lire des datasheets et à chercher par moi-même.</p></div></div>
+  </div>
+
+  <div class="section-block">
+    <h2>Technologies</h2>
+    <div class="chips" style="margin-top:.4rem"><span class="chip">ESP32</span><span class="chip">C++ Arduino</span><span class="chip a">MQTT</span><span class="chip">SPI</span><span class="chip">VS1053</span><span class="chip">WiFiManager</span><span class="chip">PubSubClient</span><span class="chip">IoT</span></div>
+  </div>
+
+  <div class="section-block">
+    <h2>Bilan réflexif</h2>
+    <div class="bilan-box">Ce projet m&apos;a montré que les réseaux ne s&apos;arrêtent pas aux routeurs et aux commutateurs. MQTT m&apos;a ouvert les yeux sur l&apos;IoT et la façon dont des objets physiques peuvent communiquer sur le réseau. Devoir lire un datasheet de 100 pages pour accéder à un registre, c&apos;est aussi une compétence.</div>
+  </div>
+
+  <div class="proj-nav">
+    <a href="sae201.html">← ← SAÉ 2.01</a>
+    <a href="sae203.html">SAÉ 2.03 →</a>
+  </div>
+</div>
+
+<footer>© 2026 Ozmen Mehmet — BUT R&T · IUT de Colmar</footer>
+</body>
+</html>
